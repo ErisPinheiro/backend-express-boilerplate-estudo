@@ -1,12 +1,15 @@
 import express from 'express'
+import bodyParser from 'body-parser'
+import userController from './controller/user'
 
 const app = express()
 const port = 3000
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+app.use(bodyParser.json())
+
+app.use('/user', userController)
 
 app.listen(port, () => {
   console.log(`App rodando em http://localhost:${port}`)
 })
+
